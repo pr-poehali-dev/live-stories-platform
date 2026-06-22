@@ -1,0 +1,28 @@
+{
+  "tests": [
+    {
+      "name": "List works",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 200
+    },
+    {
+      "name": "Create draft work",
+      "method": "POST",
+      "path": "/",
+      "body": {"action": "create_work", "type": "story", "title": "Тест", "content": "Текст истории", "status": "draft"},
+      "expectedStatus": 200,
+      "expectedBody": {"work": {"type": "story"}},
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Subscribe",
+      "method": "POST",
+      "path": "/",
+      "body": {"action": "subscribe", "email": "test@example.com", "plan": "free"},
+      "expectedStatus": 200,
+      "expectedBody": {"subscribed": true},
+      "bodyMatcher": "partial"
+    }
+  ]
+}
